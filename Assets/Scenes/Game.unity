@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.888668, g: 0.90226257, b: 0.9425141, a: 1}
+  m_IndirectSpecularColor: {r: 0.88758785, g: 0.90160114, b: 0.94194025, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -320,6 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284189936}
   - component: {fileID: 284189935}
+  - component: {fileID: 284189937}
   m_Layer: 0
   m_Name: WorldGenerator
   m_TagString: Untagged
@@ -362,6 +363,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &284189937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284189934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c093c2c8b643544082c390cc9f99adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_firstChunkSpawnPositionOffset: 10
+  m_chunksOnScreen: 5
+  m_despawnChunkDistance: 5
+  m_chunkPrefabs:
+  - {fileID: 1055703005387643989, guid: cce4e6cc108c3420b96a023ef17b1181, type: 3}
+  m_cameraTransform: {fileID: 1323985934}
 --- !u!4 &409805925 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7afd0bcad5d75d949aba7e41074d4d02, type: 3}
