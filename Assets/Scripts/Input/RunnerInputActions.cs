@@ -28,128 +28,44 @@ public partial class @RunnerInputActions : IInputActionCollection2, IDisposable
             ""id"": ""89314292-cd62-472a-a9d9-5acf23a97261"",
             ""actions"": [
                 {
-                    ""name"": ""Tap"",
+                    ""name"": ""PrimaryTouch"",
                     ""type"": ""Button"",
                     ""id"": ""0ddba1de-ec8b-4ffb-898a-7dda384a7152"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""TouchPosition"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""d2e0accb-4e6f-475b-b629-7695ced91af7"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""StartDrag"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""5d97b916-7285-484e-9ece-f6991c410dea"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EndDrag"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""278147d3-9b82-4e88-9046-5dc42eca6c62"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""TouchPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""d2e0accb-4e6f-475b-b629-7695ced91af7"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""initialStateCheck"": false
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""3a6597c0-8bdc-46db-95fa-74a7a4f8c326"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Computer"",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ca9fb684-d92a-42bf-8e4e-e33d983ac038"",
-                    ""path"": ""<Touchscreen>/touch*/tap"",
+                    ""path"": ""<Touchscreen>/primaryTouch/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mobile"",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6cf94f7c-70a7-4dee-9987-92cdabf20e54"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Computer"",
-                    ""action"": ""TouchPosition"",
+                    ""action"": ""PrimaryTouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""a8c8735c-fca5-49de-a707-381c9b402553"",
-                    ""path"": ""<Touchscreen>/position"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mobile"",
                     ""action"": ""TouchPosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""86244fa7-7b92-4dc7-8c9a-eef833ea9914"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Computer"",
-                    ""action"": ""StartDrag"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""346c38ce-a912-48fd-a8e4-991f447b9c2f"",
-                    ""path"": ""<Touchscreen>/touch*/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""StartDrag"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""225ac2fd-b691-4ce2-aed6-12e00a6cca62"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""EndDrag"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6ea6aa9c-6519-4128-adc8-55c819b63cbf"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""EndDrag"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -188,10 +104,8 @@ public partial class @RunnerInputActions : IInputActionCollection2, IDisposable
 }");
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
-        m_Gameplay_Tap = m_Gameplay.FindAction("Tap", throwIfNotFound: true);
+        m_Gameplay_PrimaryTouch = m_Gameplay.FindAction("PrimaryTouch", throwIfNotFound: true);
         m_Gameplay_TouchPosition = m_Gameplay.FindAction("TouchPosition", throwIfNotFound: true);
-        m_Gameplay_StartDrag = m_Gameplay.FindAction("StartDrag", throwIfNotFound: true);
-        m_Gameplay_EndDrag = m_Gameplay.FindAction("EndDrag", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,18 +165,14 @@ public partial class @RunnerInputActions : IInputActionCollection2, IDisposable
     // Gameplay
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
-    private readonly InputAction m_Gameplay_Tap;
+    private readonly InputAction m_Gameplay_PrimaryTouch;
     private readonly InputAction m_Gameplay_TouchPosition;
-    private readonly InputAction m_Gameplay_StartDrag;
-    private readonly InputAction m_Gameplay_EndDrag;
     public struct GameplayActions
     {
         private @RunnerInputActions m_Wrapper;
         public GameplayActions(@RunnerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Tap => m_Wrapper.m_Gameplay_Tap;
+        public InputAction @PrimaryTouch => m_Wrapper.m_Gameplay_PrimaryTouch;
         public InputAction @TouchPosition => m_Wrapper.m_Gameplay_TouchPosition;
-        public InputAction @StartDrag => m_Wrapper.m_Gameplay_StartDrag;
-        public InputAction @EndDrag => m_Wrapper.m_Gameplay_EndDrag;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -272,34 +182,22 @@ public partial class @RunnerInputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_GameplayActionsCallbackInterface != null)
             {
-                @Tap.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTap;
-                @Tap.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTap;
-                @Tap.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTap;
+                @PrimaryTouch.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPrimaryTouch;
+                @PrimaryTouch.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPrimaryTouch;
+                @PrimaryTouch.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPrimaryTouch;
                 @TouchPosition.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTouchPosition;
                 @TouchPosition.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTouchPosition;
                 @TouchPosition.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTouchPosition;
-                @StartDrag.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartDrag;
-                @StartDrag.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartDrag;
-                @StartDrag.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStartDrag;
-                @EndDrag.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEndDrag;
-                @EndDrag.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEndDrag;
-                @EndDrag.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEndDrag;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Tap.started += instance.OnTap;
-                @Tap.performed += instance.OnTap;
-                @Tap.canceled += instance.OnTap;
+                @PrimaryTouch.started += instance.OnPrimaryTouch;
+                @PrimaryTouch.performed += instance.OnPrimaryTouch;
+                @PrimaryTouch.canceled += instance.OnPrimaryTouch;
                 @TouchPosition.started += instance.OnTouchPosition;
                 @TouchPosition.performed += instance.OnTouchPosition;
                 @TouchPosition.canceled += instance.OnTouchPosition;
-                @StartDrag.started += instance.OnStartDrag;
-                @StartDrag.performed += instance.OnStartDrag;
-                @StartDrag.canceled += instance.OnStartDrag;
-                @EndDrag.started += instance.OnEndDrag;
-                @EndDrag.performed += instance.OnEndDrag;
-                @EndDrag.canceled += instance.OnEndDrag;
             }
         }
     }
@@ -324,9 +222,7 @@ public partial class @RunnerInputActions : IInputActionCollection2, IDisposable
     }
     public interface IGameplayActions
     {
-        void OnTap(InputAction.CallbackContext context);
+        void OnPrimaryTouch(InputAction.CallbackContext context);
         void OnTouchPosition(InputAction.CallbackContext context);
-        void OnStartDrag(InputAction.CallbackContext context);
-        void OnEndDrag(InputAction.CallbackContext context);
     }
 }
