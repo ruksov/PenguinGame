@@ -10,7 +10,7 @@ public class JumpingState : BaseState
         m_playerMotor.verticalVelocity = m_jumpForce;
     }
 
-    public override void StateUpdate()
+    public override void UpdateState()
     {
         if (m_playerMotor.verticalVelocity < 0)
             m_playerMotor.ChangeState(GetComponent<FallingState>());

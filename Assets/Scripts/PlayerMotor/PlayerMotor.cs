@@ -41,7 +41,7 @@ public class PlayerMotor : MonoBehaviour
         isGrounded = controller.isGrounded;
 
         m_state.ProcessMotion(ref moveVector);
-        m_state.StateUpdate();
+        m_state.UpdateState();
 
         // Feed our animator some values
         animator.SetBool("IsGrounded", isGrounded);

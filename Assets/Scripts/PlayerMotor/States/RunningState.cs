@@ -12,7 +12,7 @@ public class RunningState : BaseState
         InputManager.Instance.OnSwipe -= OnSwipe;
     }
 
-    public override void StateUpdate()
+    public override void UpdateState()
     {
         if (!m_playerMotor.isGrounded)
         {

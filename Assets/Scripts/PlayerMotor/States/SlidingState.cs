@@ -32,7 +32,7 @@ public class SlidingState : BaseState
         m_playerMotor.animator.SetTrigger("Running");
     }
 
-    public override void StateUpdate()
+    public override void UpdateState()
     {
         if (!m_playerMotor.isGrounded)
             m_playerMotor.ChangeState(GetComponent<FallingState>());

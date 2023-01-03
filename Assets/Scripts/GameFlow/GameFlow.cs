@@ -1,0 +1,44 @@
+using UnityEngine;
+
+public class GameFlow : MonoBehaviour
+{
+    // Singleton members
+    private static GameFlow m_instance;
+    public static GameFlow Instance => m_instance;
+
+    private GameState m_state;
+    [SerializeField] private GameState m_firstState;
+
+    [SerializeField] private PlayerMotor m_playerMotor;
+    public PlayerMotor PlayerMotor => m_playerMotor;
+    
+    private void Awake()
+    {
+        if (m_instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        m_instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        m_state = m_firstState;
+        m_state.Enter();
+    }
+
+    private void Update()
+    {
+        m_state.UpdateState(); 
+    }
+
+    public void ChangeState(GameState state)
+    {
+        m_state.Exit();
+        m_state = state;
+        m_state.Enter();
+    }
+}

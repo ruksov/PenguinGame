@@ -7,7 +7,7 @@ public class FallingState : BaseState
         m_playerMotor.verticalVelocity = 0.0f;
     }
 
-    public override void StateUpdate()
+    public override void UpdateState()
     {
         if (m_playerMotor.isGrounded)
             m_playerMotor.ChangeState(GetComponent<RunningState>());

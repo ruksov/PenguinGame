@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance => m_instance;
     
     // Public events
+    public event Action OnTap;
     public event Action<ESwipeDir> OnSwipe;
 
     // Swipe config
@@ -55,8 +56,14 @@ public class InputManager : MonoBehaviour
     {
         m_inputActions = new();
 
+        m_inputActions.Gameplay.PrimaryTouch.performed += OnPrimaryTouchAction;
         m_inputActions.Gameplay.PrimaryTouch.started += OnStartPrimaryTouchAction;
         m_inputActions.Gameplay.PrimaryTouch.canceled += OnEndPrimaryTouchAction;
+    }
+
+    private void OnPrimaryTouchAction(InputAction.CallbackContext ctx)
+    {
+        OnTap?.Invoke();
     }
 
     private void OnStartPrimaryTouchAction(InputAction.CallbackContext ctx)

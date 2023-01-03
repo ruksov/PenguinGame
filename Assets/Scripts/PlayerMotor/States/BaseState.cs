@@ -7,7 +7,7 @@ public abstract class BaseState : MonoBehaviour
     
     public virtual void Enter() { }
     public virtual void Exit() { }
-    public virtual void StateUpdate() { }
+    public virtual void UpdateState() { }
 
     private void Awake()
     {
