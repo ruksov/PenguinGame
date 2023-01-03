@@ -29,6 +29,7 @@ public class RunningState : BaseState
                 break;
             
             case InputManager.ESwipeDir.Down:
+                m_playerMotor.ChangeState(GetComponent<SlidingState>());
                 break;
             
             case InputManager.ESwipeDir.Right:

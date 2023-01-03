@@ -17,6 +17,7 @@ public class PlayerMotor : MonoBehaviour
     public float terminalVelocity = 20.0f;
 
     public CharacterController controller;
+    public Animator animator;
 
     private BaseState m_state;
     [SerializeField] private BaseState m_firstState;
@@ -24,6 +25,7 @@ public class PlayerMotor : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
 
         m_state = m_firstState;
         m_state.Enter();
@@ -40,6 +42,10 @@ public class PlayerMotor : MonoBehaviour
 
         m_state.ProcessMotion(ref moveVector);
         m_state.StateUpdate();
+
+        // Feed our animator some values
+        animator.SetBool("IsGrounded", isGrounded);
+        animator.SetFloat("Speed", Mathf.Abs(moveVector.z));
         
         controller.Move(moveVector * Time.deltaTime);  
     }

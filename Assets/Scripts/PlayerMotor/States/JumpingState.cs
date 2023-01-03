@@ -6,6 +6,7 @@ public class JumpingState : BaseState
     
     public override void Enter()
     {
+        m_playerMotor.animator.SetTrigger("Jump");
         m_playerMotor.verticalVelocity = m_jumpForce;
     }
 
