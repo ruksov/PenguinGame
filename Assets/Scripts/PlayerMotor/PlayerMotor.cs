@@ -12,7 +12,7 @@ public class PlayerMotor : MonoBehaviour
 
     public float distanceInBetweenLanes = 3.0f;
     public float baseRunSpeed = 5.0f;
-    public float baseSidewaySpeed = 10.0f;
+    public float baseSideSpeed = 10.0f;
     public float gravity = 14.0f;
     public float terminalVelocity = 20.0f;
 
@@ -38,10 +38,31 @@ public class PlayerMotor : MonoBehaviour
     {
         isGrounded = controller.isGrounded;
 
-        moveVector = m_state.ProcessMotion();
-        m_state.Update();
+        m_state.ProcessMotion(ref moveVector);
+        m_state.StateUpdate();
         
         controller.Move(moveVector * Time.deltaTime);  
+    }
+
+    public void ApplyGravity()
+    {
+        verticalVelocity -= gravity * Time.deltaTime;
+        verticalVelocity = Mathf.Max(verticalVelocity, -terminalVelocity);
+    }
+
+    public float ActualSideSpeed()
+    {
+        float distanceToLane = CurrentLanePositionX() - transform.position.x;
+
+        if (Mathf.Abs(distanceToLane) < (baseSideSpeed * Time.deltaTime))
+            return distanceToLane / Time.deltaTime;
+
+        return distanceToLane > 0 ? baseSideSpeed : -baseRunSpeed;
+    }
+
+    private float CurrentLanePositionX()
+    {
+        return currentLane * distanceInBetweenLanes;
     }
 
     public void ChangeLane(int direction)
