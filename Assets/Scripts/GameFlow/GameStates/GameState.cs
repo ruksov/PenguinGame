@@ -4,7 +4,7 @@ public abstract class GameState : MonoBehaviour
 {
     protected GameFlow m_gameFlow;
     
-    public virtual void Enter() { }
+    public virtual void Enter() { Debug.Log("Enter to " + ToString()); }
     public virtual void Exit() { }
     public virtual void UpdateState() { }
 

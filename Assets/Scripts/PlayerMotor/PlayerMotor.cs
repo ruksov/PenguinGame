@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
@@ -62,7 +63,7 @@ public class PlayerMotor : MonoBehaviour
 
     public float ActualSideSpeed()
     {
-        float distanceToLane = CurrentLanePositionX() - transform.position.x;
+        float distanceToLane = CurrentLanePositionX() - transform.position. x;
 
         if (Mathf.Abs(distanceToLane) < (baseSideSpeed * Time.deltaTime))
             return distanceToLane / Time.deltaTime;
@@ -80,6 +81,11 @@ public class PlayerMotor : MonoBehaviour
         currentLane = Mathf.Clamp(currentLane + direction, -1, 1);
     }
 
+    public void ResetLane()
+    {
+        currentLane = 0;
+    }
+
     public void ChangeState(BaseState state)
     {
         m_state.Exit();
@@ -92,5 +98,10 @@ public class PlayerMotor : MonoBehaviour
         if(m_deathLayer == hit.gameObject.layer)
             ChangeState(GetComponent<DeathState>());
         
+    }
+
+    public void RespawnPlayer()
+    {
+        ChangeState(GetComponent<RespawnState>());
     }
 }

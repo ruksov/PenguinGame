@@ -1,18 +1,38 @@
+using System;
+
 public class GameStateDeath : GameState
 {
     public override void Enter()
     {
-        InputManager.Instance.OnTap += OnTap;
+        base.Enter();
+        InputManager.Instance.OnSwipe += OnSwipe;
     }
-
     public override void Exit()
     {
-        InputManager.Instance.OnTap -= OnTap;
+        InputManager.Instance.OnSwipe -= OnSwipe;
     }
 
-    private void OnTap()
+    private void OnSwipe(InputManager.ESwipeDir swipeDir)
     {
-        m_gameFlow.PlayerMotor.animator.SetTrigger("Respawn");
-        m_gameFlow.PlayerMotor.ChangeState(m_gameFlow.PlayerMotor.GetComponent<RunningState>());
+        switch (swipeDir)
+        {
+            case InputManager.ESwipeDir.Up:
+                RestartGame();
+                break;
+
+            case InputManager.ESwipeDir.Down:
+                OpenMenu();
+                break;
+        }
+    }
+
+    private void OpenMenu()
+    {
+    }
+
+    private void RestartGame()
+    {
+        m_gameFlow.PlayerMotor.RespawnPlayer();
+        m_gameFlow.ChangeState(GetComponent<GameStateInGame>());
     }
 }
