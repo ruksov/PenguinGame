@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
@@ -21,6 +18,8 @@ public class PlayerMotor : MonoBehaviour
 
     private BaseState m_state;
     [SerializeField] private BaseState m_firstState;
+
+    [SerializeField] private int m_deathLayer;
 
     private void Start()
     {
@@ -52,8 +51,13 @@ public class PlayerMotor : MonoBehaviour
 
     public void ApplyGravity()
     {
+        if(isGrounded && verticalVelocity < 0.0f)
+        {
+            verticalVelocity = -gravity;
+            return;
+        }
+
         verticalVelocity -= gravity * Time.deltaTime;
-        verticalVelocity = Mathf.Max(verticalVelocity, -terminalVelocity);
     }
 
     public float ActualSideSpeed()
@@ -81,5 +85,12 @@ public class PlayerMotor : MonoBehaviour
         m_state.Exit();
         m_state = state;
         m_state.Enter();  
+    }
+
+    public void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(m_deathLayer == hit.gameObject.layer)
+            ChangeState(GetComponent<DeathState>());
+        
     }
 }

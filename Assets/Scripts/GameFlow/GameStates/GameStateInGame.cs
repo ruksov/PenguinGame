@@ -1,4 +1,4 @@
-public class InGameGameState : GameState
+public class GameStateInGame : GameState
 {
     public override void Enter()
     {

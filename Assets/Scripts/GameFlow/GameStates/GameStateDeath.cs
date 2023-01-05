@@ -1,4 +1,4 @@
-public class InitGameState : GameState
+public class GameStateDeath : GameState
 {
     public override void Enter()
     {
@@ -12,6 +12,7 @@ public class InitGameState : GameState
 
     private void OnTap()
     {
-        m_gameFlow.ChangeState(GetComponent<InGameGameState>());
+        m_gameFlow.PlayerMotor.animator.SetTrigger("Respawn");
+        m_gameFlow.PlayerMotor.ChangeState(m_gameFlow.PlayerMotor.GetComponent<RunningState>());
     }
 }
