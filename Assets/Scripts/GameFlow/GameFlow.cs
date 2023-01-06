@@ -1,4 +1,13 @@
 using UnityEngine;
+using System.Collections.Generic;
+
+public enum ECamera
+{
+    Init = 0,
+    InGame,
+    Shop,
+    Respawn
+}
 
 public class GameFlow : MonoBehaviour
 {
@@ -11,6 +20,11 @@ public class GameFlow : MonoBehaviour
 
     [SerializeField] private PlayerMotor m_playerMotor;
     public PlayerMotor PlayerMotor => m_playerMotor;
+
+    [SerializeField] private WorldGenerator[] m_worldGenerators;
+    public WorldGenerator[] WorldGenerators => m_worldGenerators;
+
+    [SerializeField] private GameObject[] m_cameras;
     
     private void Awake()
     {
@@ -40,5 +54,15 @@ public class GameFlow : MonoBehaviour
         m_state.Exit();
         m_state = state;
         m_state.Enter();
+    }
+
+    public void ChangeCamera(ECamera type)
+    {
+        foreach(GameObject camera in m_cameras)
+        {
+            camera.SetActive(false);
+        }
+
+        m_cameras[(int)type].SetActive(true);
     }
 }

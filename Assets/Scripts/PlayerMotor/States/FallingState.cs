@@ -4,7 +4,7 @@ public class FallingState : BaseState
 {
     public override void Exit()
     {
-        m_playerMotor.verticalVelocity = 0.0f;
+        m_playerMotor.moveVector.y = 0.0f;
     }
 
     public override void UpdateState()
@@ -15,10 +15,7 @@ public class FallingState : BaseState
 
     public override void ProcessMotion(ref Vector3 moveVector)
     {
-        m_playerMotor.ApplyGravity();
-
         moveVector.x = m_playerMotor.ActualSideSpeed();
-        moveVector.y = m_playerMotor.verticalVelocity;
         moveVector.z = m_playerMotor.baseRunSpeed;
     }
 }

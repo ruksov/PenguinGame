@@ -17,12 +17,6 @@ public class WorldGenerator : MonoBehaviour
     private Queue<Chunk> m_activeChunks = new();
     private List<Chunk> m_chunkPool = new();
 
-    // TO DELETE @@
-    private void Awake()
-    {
-        ResetWorld();
-    }
-
     private void Start()
     {
         if (m_chunkPrefabs.Count == 0)
@@ -38,12 +32,7 @@ public class WorldGenerator : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        ScanPosition();
-    }
-
-    private void ScanPosition()
+    public void ScanPosition()
     {
         float cameraZ = m_cameraTransform.position.z;
         Chunk firstChunk = m_activeChunks.Peek();
@@ -94,7 +83,7 @@ public class WorldGenerator : MonoBehaviour
         m_chunkPool.Add(m_activeChunks.Dequeue().Hide());
     }
 
-    private void ResetWorld()
+    public void ResetWorld()
     {
         m_lastChunkSpawnZ = m_firstChunkSpawnPositionOffset;
 

@@ -1,5 +1,3 @@
-using System;
-
 public class GameStateDeath : GameState
 {
     public override void Enter()
@@ -28,11 +26,12 @@ public class GameStateDeath : GameState
 
     private void OpenMenu()
     {
+        m_gameFlow.ChangeState(GetComponent<GameStateInit>());
     }
 
     private void RestartGame()
     {
-        m_gameFlow.PlayerMotor.RespawnPlayer();
         m_gameFlow.ChangeState(GetComponent<GameStateInGame>());
+        m_gameFlow.PlayerMotor.RespawnPlayer();
     }
 }

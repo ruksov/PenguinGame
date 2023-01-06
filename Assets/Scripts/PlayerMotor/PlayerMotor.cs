@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
-    [HideInInspector] public Vector3 moveVector;
-    [HideInInspector] public float verticalVelocity;
+    [ReadOnly] public Vector3 moveVector;
     [HideInInspector] public bool isGrounded;
     [HideInInspector] public int currentLane;
 
@@ -40,6 +39,7 @@ public class PlayerMotor : MonoBehaviour
     {
         isGrounded = controller.isGrounded;
 
+        ApplyGravity();
         m_state.ProcessMotion(ref moveVector);
         m_state.UpdateState();
 
@@ -52,13 +52,13 @@ public class PlayerMotor : MonoBehaviour
 
     public void ApplyGravity()
     {
-        if(isGrounded && verticalVelocity < 0.0f)
+        if(isGrounded && moveVector.y < 0.0f)
         {
-            verticalVelocity = -gravity;
+            moveVector.y = -gravity;
             return;
         }
 
-        verticalVelocity -= gravity * Time.deltaTime;
+        moveVector.y -= gravity * Time.deltaTime;
     }
 
     public float ActualSideSpeed()
@@ -97,11 +97,17 @@ public class PlayerMotor : MonoBehaviour
     {
         if(m_deathLayer == hit.gameObject.layer)
             ChangeState(GetComponent<DeathState>());
-        
     }
 
     public void RespawnPlayer()
     {
         ChangeState(GetComponent<RespawnState>());
+    }
+
+    public void Teleport(Vector3 position)
+    {
+        controller.enabled = false;
+        transform.position = position;
+        controller.enabled = true;
     }
 }

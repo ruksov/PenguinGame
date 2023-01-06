@@ -7,17 +7,11 @@ public class DeathState : BaseState
     public override void Enter()
     {
         m_playerMotor.animator.SetTrigger("Death");
-
-        m_playerMotor.verticalVelocity = m_knockbackForce.y;
         m_playerMotor.moveVector = m_knockbackForce;
     }
 
     public override void ProcessMotion(ref Vector3 moveVector)
     {
-        m_playerMotor.ApplyGravity();
-
-        moveVector.y = m_playerMotor.verticalVelocity;
-
         if(moveVector.z < 0.0f)
         {
             moveVector.z += m_playerMotor.baseRunSpeed * 0.5f * Time.deltaTime;
