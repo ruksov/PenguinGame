@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
@@ -22,20 +21,10 @@ public class PlayerMotor : MonoBehaviour
 
     private int currentLane;
 
-    private void Start()
+    private void Awake()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-
-        m_state = m_firstState;
-        m_state.Enter();
-    }
-
-    public void ResetPlayer()
-    {
-        currentLane = 0;
-        Teleport(Vector3.zero);
-        ChangeState(m_firstState);
     }
 
     private void Update()
@@ -56,6 +45,13 @@ public class PlayerMotor : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(moveVector.z));
         
         controller.Move(moveVector * Time.deltaTime);  
+    }
+
+    public void ResetPlayer()
+    {
+        currentLane = 0;
+        Teleport(Vector3.zero);
+        ChangeState(m_firstState);
     }
 
     public void ApplyGravity()
@@ -96,7 +92,9 @@ public class PlayerMotor : MonoBehaviour
 
     public void ChangeState(BaseState state)
     {
-        m_state.Exit();
+        if(m_state != null)
+            m_state.Exit();
+
         m_state = state;
         m_state.Enter();  
     }
