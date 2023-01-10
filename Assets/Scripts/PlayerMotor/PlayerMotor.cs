@@ -5,7 +5,6 @@ public class PlayerMotor : MonoBehaviour
 {
     [ReadOnly] public Vector3 moveVector;
     [HideInInspector] public bool isGrounded;
-    [HideInInspector] public int currentLane;
 
     public float distanceInBetweenLanes = 3.0f;
     public float baseRunSpeed = 5.0f;
@@ -21,6 +20,8 @@ public class PlayerMotor : MonoBehaviour
 
     [SerializeField] private int m_deathLayer;
 
+    private int currentLane;
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -28,6 +29,13 @@ public class PlayerMotor : MonoBehaviour
 
         m_state = m_firstState;
         m_state.Enter();
+    }
+
+    public void ResetPlayer()
+    {
+        currentLane = 0;
+        Teleport(Vector3.zero);
+        ChangeState(m_firstState);
     }
 
     private void Update()

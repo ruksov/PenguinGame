@@ -8,9 +8,7 @@ public class GameStateInit : GameState
 
         m_gameFlow.ChangeCamera(ECamera.Init);
         
-        m_gameFlow.PlayerMotor.ResetLane();
-        m_gameFlow.PlayerMotor.Teleport(Vector3.zero);
-        m_gameFlow.PlayerMotor.ChangeState(m_gameFlow.PlayerMotor.GetComponent<IdleState>());
+        m_gameFlow.PlayerMotor.ResetPlayer();
 
         foreach (var worldGenerator in m_gameFlow.WorldGenerators)
         {
