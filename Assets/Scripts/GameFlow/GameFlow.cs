@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public enum ECamera
 {
-    Init = 0,
+    Menu = 0,
     InGame,
     Shop,
     Respawn

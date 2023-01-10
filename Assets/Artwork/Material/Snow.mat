@@ -146,5 +146,5 @@ Material:
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _tileOffset: {r: 0, g: 0, b: 0, a: 0}
     - snowOffset: {r: 0, g: -0, b: 0, a: 0}
-    - tileOffset: {r: 0, g: -0, b: 0, a: 0}
+    - tileOffset: {r: 0, g: -9.17982, b: 0, a: 0}
   m_BuildTextureStacks: []
