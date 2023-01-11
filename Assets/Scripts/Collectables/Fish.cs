@@ -22,6 +22,8 @@ public class Fish : MonoBehaviour
     {
         m_collider.enabled = false;
         m_animator.SetTrigger("Pickup");
+
+        GameStats.Instance.CollectFish();
     }
 
     private void OnShowChunk()

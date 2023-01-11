@@ -33,6 +33,7 @@ public class GameStateMenu : GameState
 
     public void OnPlayClick()
     {
+        GameStats.Instance.ResetSession();
         m_gameFlow.PlayerMotor.ChangeState(m_gameFlow.PlayerMotor.GetComponent<RunningState>());
         m_gameFlow.ChangeState(GetComponent<GameStateInGame>());
     }

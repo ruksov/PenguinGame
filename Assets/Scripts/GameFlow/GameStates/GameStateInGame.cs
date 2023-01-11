@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -7,14 +8,22 @@ public class GameStateInGame : GameState
     [SerializeField] private TextMeshProUGUI m_fishCountText;
     [SerializeField] private TextMeshProUGUI m_scoreText;
 
+    private void Start()
+    {
+        GameStats.Instance.OnScoreChanged += OnScoreChanged;
+        GameStats.Instance.OnFishCountChanged += OnFishCountChanged;
+    }
+
+    private void OnDestroy()
+    {
+        GameStats.Instance.OnScoreChanged -= OnScoreChanged;
+        GameStats.Instance.OnFishCountChanged -= OnFishCountChanged;
+    }
+
     public override void Enter()
     {
         base.Enter();
         m_gameFlow.ChangeCamera(ECamera.InGame);
-
-        m_fishCountText.text = "xTBD";
-        m_scoreText.text = "TBD";
-
         m_gameUI.SetActive(true);
     }
 
@@ -30,5 +39,15 @@ public class GameStateInGame : GameState
         {
             worldGenerator.ScanPosition();
         }
+    }
+
+    private void OnFishCountChanged(int fishCount)
+    {
+        m_fishCountText.text = "x" + fishCount.ToString();
+    }
+
+    private void OnScoreChanged(int score)
+    {
+        m_scoreText.text = score.ToString();
     }
 }

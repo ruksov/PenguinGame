@@ -148,5 +148,5 @@ Material:
     - _color: {r: 1, g: 1, b: 1, a: 0}
     - _tileOffset: {r: 0, g: 0, b: 0, a: 0}
     - snowOffset: {r: 0, g: -0, b: 0, a: 0}
-    - tileOffset: {r: 0, g: -0, b: 0, a: 0}
+    - tileOffset: {r: 0, g: -72.51286, b: 0, a: 0}
   m_BuildTextureStacks: []

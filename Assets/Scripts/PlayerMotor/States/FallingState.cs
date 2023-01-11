@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class FallingState : BaseState
 {
-    public override void Exit()
+    public override void Enter()
     {
+        base.Enter();
         m_playerMotor.moveVector.y = 0.0f;
     }
 
